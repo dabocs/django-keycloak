@@ -73,6 +73,11 @@ Release Notes
 
 **unreleased**
 
+**v0.2.5**
+
+* Add registeration redirect view
+
+
 **v0.2.4**
 
 * Fixed refresh token expiration date exists
