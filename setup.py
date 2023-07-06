@@ -41,7 +41,7 @@ setup(
         'factory-boy',
         'freezegun'
     ],
-    url='https://github.com/Peter-Slump/django-keycloak',
+    url='https://github.com/skamansam/django-keycloak',
     license='MIT',
     author='Peter Slump',
     author_email='peter@yarf.nl',

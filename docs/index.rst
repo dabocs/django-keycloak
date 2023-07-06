@@ -41,7 +41,7 @@ Install requirement.
 
 .. code-block:: bash
 
-    $ pip install git+https://github.com/Peter-Slump/django-keycloak.git
+    $ pip install git+https://github.com/skamansam/django-keycloak.git
 
 Setup
 =====
@@ -83,7 +83,7 @@ add the middleware, configure the urls and point to the correct login page.
     urlpatterns = [
         ...
 
-        url(r'^keycloak/', include('django_keycloak.urls')),
+        path('keycloak/', include('django_keycloak.urls')),
     ]
 
 
