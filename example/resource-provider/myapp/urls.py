@@ -13,16 +13,16 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include
+from django.urls import include, path
 from django.contrib import admin
 
 from myapp import views
 
 
 urlpatterns = [
-    url(r'^$', views.Home.as_view(), name='index'),
-    url(r'^secured$', views.Secured.as_view(), name='secured'),
-    url(r'^permission$', views.Permission.as_view(), name='permission'),
-    url(r'^keycloak/', include('django_keycloak.urls')),
-    url(r'^admin/', admin.site.urls),
+    path('/', views.Home.as_view(), name='index'),
+    path('secured', views.Secured.as_view(), name='secured'),
+    path('permission', views.Permission.as_view(), name='permission'),
+    path('keycloak', include('django_keycloak.urls')),
+    path('admin', admin.site.urls),
 ]
