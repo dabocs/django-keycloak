@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "django-keycloak"
+version = "0.2.0"
+description = "Integrate Keycloak with Django 4.2+"
+authors = ["Samuel C. Tyler <skamansam@gmail.com>", "Peter Slump <peter@yarf.nl>"]
+readme = "README.rst"
+packages = [{include = "src/django_keycloak"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+Django = "^4.2.4"
+
+[tool.poetry.group.dev.dependencies]
+django-dynamic-fixtures = "^0.2.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
