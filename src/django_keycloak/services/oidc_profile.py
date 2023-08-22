@@ -219,7 +219,8 @@ def _update_or_create(client, token_response, initiate_time):
         key=client.realm.certs,
         algorithms=client.openid_api_client.well_known[
             'id_token_signing_alg_values_supported'],
-        issuer=issuer
+        issuer=issuer,
+        access_token=token_response['access_token']
     )
 
     oidc_profile = update_or_create_user_and_oidc_profile(
