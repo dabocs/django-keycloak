@@ -1,17 +1,35 @@
 [tool.poetry]
-name = "django-keycloak"
+name = "django42-keycloak"
 version = "0.2.0"
 description = "Integrate Keycloak with Django 4.2+"
+homepage = 'https://github.com/skamansam/django-keycloak'
+repository = 'https://github.com/skamansam/django-keycloak'
+keywords = ["django", "keycloak", "auth"]
+license = "MIT"
 authors = ["Samuel C. Tyler <skamansam@gmail.com>", "Peter Slump <peter@yarf.nl>"]
 readme = "README.rst"
 packages = [{include = "src/django_keycloak"}]
 
+[tool.poe.tasks]
+test         = "pytest --cov=my_app"                         # a simple command task
+serve.script = "my_app.service:run(debug=True)"              # python script based task
+tunnel.shell = "ssh -N -L 0.0.0.0:8080:$PROD:8080 $PROD &"   # (posix) shell based task
+
+
 [tool.poetry.dependencies]
 python = "^3.11"
 Django = "^4.2.4"
+python-keycloak-client = "^0.2.3"
 
 [tool.poetry.group.dev.dependencies]
 django-dynamic-fixtures = "^0.2.1"
+
+[tool.poetry.group.test.dependencies]
+pytest-django = "^4.5.2"
+pytest-cov = "^4.1.0"
+mock = "^5.1.0"
+factory-boy = "^3.3.0"
+freezegun = "^1.2.2"
 
 [build-system]
 requires = ["poetry-core"]

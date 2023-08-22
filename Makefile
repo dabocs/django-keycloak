@@ -1,18 +1,18 @@
 install-python:
-	pip install --upgrade setuptools
-	pip install -e .
-	pip install "file://`pwd`#egg=django-keycloak[dev,doc]"
+	# pyenv virtualenv 3.11.4 django-keycloak || pyenv activate django-keycloak
+	pip install --upgrade setuptools poethepoet
+	poe install
+	poe addsudo  "file://`pwd`#egg=django-keycloak[dev,doc]"
 
 bump-patch:
-	bumpversion patch
+	poetry version patch
 
 bump-minor:
-	bumpversion minor
+	poetry version minor
 
 deploy-pypi: clear
-	python3 -c "import sys; sys.version_info >= (3, 5, 3) or sys.stdout.write('Python version must be greater then 3.5.2\n') or exit(1)"
-	python3 setup.py sdist bdist_wheel
-	twine upload dist/*
+	poetry build
+	poetry publish
 
 clear:
 	rm -rf dist/*
