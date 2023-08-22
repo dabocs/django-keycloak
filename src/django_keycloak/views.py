@@ -25,8 +25,9 @@ from django.views.generic.base import (
     TemplateView
 )
 
-from django_keycloak.models import Nonce
+from django_keycloak.models import Nonce, Server, Client, Realm
 from django_keycloak.auth import remote_user_login
+from urllib.parse import urlencode
 
 
 logger = logging.getLogger(__name__)
@@ -46,7 +47,7 @@ class Login(RedirectView):
         authorization_url = self.request.realm.client.openid_api_client\
             .authorization_url(
                 redirect_uri=nonce.redirect_uri,
-                scope='openid profile email',
+                scope='openid profile email', # modified from 'openid given_name family_name email' to fix invaild scopes issue https://github.com/oauth2-proxy/oauth2-proxy/issues/1448
                 state=str(nonce.state)
             )
 
@@ -91,6 +92,9 @@ class LoginComplete(RedirectView):
             login(request, user)
 
         nonce.delete()
+
+        if settings.LOGIN_REDIRECT_URL:
+            return HttpResponseRedirect(resolve_url(settings.LOGIN_REDIRECT_URL))
 
         return HttpResponseRedirect(nonce.next_path or '/')
 
@@ -151,3 +155,31 @@ class SessionIframe(TemplateView):
             cookie_name=getattr(settings, 'KEYCLOAK_SESSION_STATE_COOKIE_NAME',
                                 'session_state')
         )
+
+
+class Register(RedirectView):
+    """Generate link for user registration with Keycloak."""
+
+    def get_redirect_url(self, *args, **kwargs):
+        server = Server.objects.last()
+        realm = Realm.objects.last()
+        client = Client.objects.last()
+        lang = self.request.GET.get('lang')
+
+        keycloack_register_url = f"{server.url.rstrip('/')}/realms/{realm.name}/protocol/openid-connect/registrations"
+
+        registration_url = (
+            keycloack_register_url
+            + "?"
+            + urlencode(
+                {
+                    "client_id": client.client_id,
+                    "response_type": "code",
+                    "scope": "openid email",
+                    "redirect_uri": self.request.build_absolute_uri(location=reverse('keycloak_login')),
+                    "kc_locale": lang if lang else 'ar',
+                }
+            )
+        )
+
+        return registration_url

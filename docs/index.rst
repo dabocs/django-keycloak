@@ -74,6 +74,8 @@ add the middleware, configure the urls and point to the correct login page.
     ]
 
     LOGIN_URL = 'keycloak_login'
+    LOGIN_REDIRECT_URL = "after_login"
+    LOGOUT_REDIRECT_URL = "after_logout"
 
 .. code-block:: python
 
@@ -102,4 +104,4 @@ For requiring a logged in user you can just use the `standard Django
 functionality <https://docs.djangoproject.com/en/1.11/topics/auth/default/#limiting-access-to-logged-in-users>`_.
 This also counts for `enforcing permissions <https://docs.djangoproject.com/en/1.11/topics/auth/default/#the-permission-required-decorator>`_.
 
-This app makes use of the `Python Keycloak client <https://github.com/Peter-Slump/python-keycloak-client>`_
+This app makes use of the `Python Keycloak client pkg v0.3.0 <https://pypi.org/project/python-keycloak-client-pkg/>`_

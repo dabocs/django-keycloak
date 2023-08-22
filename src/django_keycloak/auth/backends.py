@@ -28,6 +28,9 @@ class KeycloakAuthorizationBase(object):
         except UserModel.DoesNotExist:
             return None
 
+        if not user.oidc_profile or not user.oidc_profile.refresh_expires_before:
+            return None
+
         if user.oidc_profile.refresh_expires_before > timezone.now():
             return user
 
@@ -42,6 +45,11 @@ class KeycloakAuthorizationBase(object):
         return user_obj._keycloak_perm_cache
 
     def get_keycloak_permissions(self, user_obj):
+        return set()
+        # FIXME: UNCOMMENT CODE BELLOW AND FIX ENTTITLMENT BUG
+        # https://issues.redhat.com/browse/KEYCLOAK-8353
+
+        
         if not hasattr(user_obj, 'oidc_profile'):
             return set()
 
