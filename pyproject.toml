@@ -1,14 +1,27 @@
 [tool.poetry]
 name = "django42-keycloak"
-version = "0.2.0"
+version = "0.2.6"
 description = "Integrate Keycloak with Django 4.2+"
 homepage = 'https://github.com/skamansam/django-keycloak'
 repository = 'https://github.com/skamansam/django-keycloak'
-keywords = ["django", "keycloak", "auth"]
+keywords = ["django", "keycloak", "auth", "django42", "python311"]
 license = "MIT"
-authors = ["Samuel C. Tyler <skamansam@gmail.com>", "Peter Slump <peter@yarf.nl>"]
+authors = [
+  "Samuel C. Tyler <skamansam@gmail.com>",
+  "Ahmad Dabo <dabo.cs@gmail.com>",
+  "Peter Slump <peter@yarf.nl>",
+]
 readme = "README.rst"
 packages = [{include = "src/django_keycloak"}]
+classifiers = [
+    "Framework :: Django",
+    "Framework :: Django :: 4.2",
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/skamansam/django-keycloak/issues"
 
 [tool.poe.tasks]
 test         = "pytest --cov=my_app"                         # a simple command task

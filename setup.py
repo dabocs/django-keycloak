@@ -2,7 +2,7 @@ import os
 
 from setuptools import setup, find_packages
 
-VERSION = '0.1.2'
+VERSION = '0.2.6'
 
 with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as readme:
     README = readme.read()
@@ -28,11 +28,12 @@ setup(
     },
     setup_requires=[
         'pytest-runner',
-        'python-keycloak-client',
+        'python-keycloak-client-pkg==0.3.0',
     ],
+
     install_requires=[
-        'python-keycloak-client>=0.2.2',
-        'Django>=1.11',
+        'python-keycloak-client-pkg==0.3.0',
+        'Django>=4.1',
     ],
     tests_require=[
         'pytest-django',
@@ -43,8 +44,8 @@ setup(
     ],
     url='https://github.com/skamansam/django-keycloak',
     license='MIT',
-    author='Peter Slump',
-    author_email='peter@yarf.nl',
+    author='Ahmad Dabo',
+    author_email='dabo.cs@gmail.com',
     description='Install Django Keycloak.',
     classifiers=[]
 

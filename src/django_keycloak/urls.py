@@ -13,15 +13,15 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.urls import path
-
+from django.urls import include, path, re_path
 from django_keycloak import views
 
 urlpatterns = [
-    path('login', views.Login.as_view(), name='keycloak_login'),
-    path('login-complete', views.LoginComplete.as_view(),
+    re_path(r'^login$', views.Login.as_view(), name='keycloak_login'),
+    re_path(r'^login-complete$', views.LoginComplete.as_view(),
         name='keycloak_login_complete'),
-    path('logout', views.Logout.as_view(), name='keycloak_logout'),
-    path('session-iframe', views.SessionIframe.as_view(),
-        name='keycloak_session_iframe')
+    re_path(r'^logout$', views.Logout.as_view(), name='keycloak_logout'),
+    re_path(r'^session-iframe', views.SessionIframe.as_view(),
+        name='keycloak_session_iframe'),
+    re_path(r'^register$', views.Register.as_view(), name='keycloak_register'),
 ]
