@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-keycloak"
-version = "0.2.7"
+version = "0.2.8"
 description = "Integrate Keycloak with Django 4.2+"
 homepage = 'https://github.com/skamansam/django-keycloak'
 repository = 'https://github.com/skamansam/django-keycloak'
