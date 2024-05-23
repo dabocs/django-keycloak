@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django42-keycloak"
-version = "0.2.8"
+version = "0.2.9"
 description = "Integrate Keycloak with Django 4.2+"
 homepage = 'https://github.com/skamansam/django-keycloak'
 repository = 'https://github.com/skamansam/django-keycloak'
@@ -30,8 +30,8 @@ tunnel.shell = "ssh -N -L 0.0.0.0:8080:$PROD:8080 $PROD &"   # (posix) shell bas
 
 
 [tool.poetry.dependencies]
-python = "^3.11"
-Django = "^4.2.4"
+python = ">=3.11"
+Django = ">=4.2"
 python-keycloak-client = "^0.2.3"
 
 [tool.poetry.group.dev.dependencies]
