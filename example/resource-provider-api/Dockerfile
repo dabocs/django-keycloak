@@ -1,15 +1,14 @@
-FROM python:3-alpine
+FROM python:3.11.4-alpine
 
 RUN apk update \
-   && apk add git openssl-dev libffi-dev python-dev build-base
+   && apk add git openssl-dev libffi-dev build-base \
+   && pip install poethepoet poetry
 
-RUN mkdir -p /usr/src/app
+COPY ./poetry.lock ./pyproject.toml /usr/src/app/
 
 WORKDIR /usr/src/app
 
-COPY requirements.txt /usr/src/app/
-
-RUN pip install --no-cache-dir -r requirements.txt
+RUN poetry install
 
 COPY . /usr/src/app
 

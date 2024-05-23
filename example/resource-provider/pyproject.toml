@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "resource-provider"
+version = "0.1.0"
+description = "resource provider for django-keycloak example"
+authors = ["Samuel C. Tyler <skamansam@gmail.com>"]
+# readme = "README.md"
+# packages = [{include = "resource_provider"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+Django = "^4.2.4"
+
+[tool.poetry.group.dev.dependencies]
+django-dynamic-fixtures = "^0.2.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

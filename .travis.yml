@@ -8,6 +8,7 @@ env:
   - DJANGO_VERSION=1.11
   - DJANGO_VERSION=2.0
   - DJANGO_VERSION=4.1
+  - DJANGO_VERSION=4.2
 addons:
     sonarcloud:
       organization: $SC_ORG

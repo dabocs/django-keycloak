@@ -2,17 +2,17 @@
 Django Keycloak
 ===============
 
-.. image:: https://www.travis-ci.org/Peter-Slump/django-keycloak.svg?branch=master
-   :target: https://www.travis-ci.org/Peter-Slump/django-keycloak
+.. image:: https://www.travis-ci.org/skamansam/django-keycloak.svg?branch=master
+   :target: https://www.travis-ci.org/skamansam/django-keycloak
    :alt: Build Status
 .. image:: https://readthedocs.org/projects/django-keycloak/badge/?version=latest
    :target: http://django-keycloak.readthedocs.io/en/latest/?badge=latest
    :alt: Documentation Status
-.. image:: https://codecov.io/gh/Peter-Slump/django-keycloak/branch/master/graph/badge.svg
-   :target: https://codecov.io/gh/Peter-Slump/django-keycloak
+.. image:: https://codecov.io/gh/skamansam/django-keycloak/branch/master/graph/badge.svg
+   :target: https://codecov.io/gh/skamansam/django-keycloak
    :alt: codecov
 .. image:: https://api.codeclimate.com/v1/badges/eb19f47dc03dec40cea7/maintainability
-   :target: https://codeclimate.com/github/Peter-Slump/django-keycloak/maintainability
+   :target: https://codeclimate.com/github/skamansam/django-keycloak/maintainability
    :alt: Maintainability
 
 Django app to add Keycloak  support to your project.
@@ -72,6 +72,7 @@ Release Notes
 =============
 
 **unreleased**
+**v0.1.2**
 
 **v0.2.5**
 
